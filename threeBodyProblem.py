@@ -1,9 +1,19 @@
 import ctypes
 import pygame
 import sys
+import platform
+
+system = platform.system()
+
+if system == "Windows":
+    dll_name = "libthreebodyproblem.dll"
+elif system == "Darwin":
+    dll_name = "libthreebodyproblem.dylib"
+else:
+    dll_name = "libthreebodyproblem.so"
 
 # DLL config
-dll = ctypes.CDLL('./libthreebodyproblem.so')
+dll = ctypes.CDLL(f'./{dll_name}')
 
 class Vector2D(ctypes.Structure):
     _fields_ = [("x", ctypes.c_float),

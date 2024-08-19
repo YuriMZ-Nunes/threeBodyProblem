@@ -2,7 +2,19 @@ CXX = g++
 CXXFLAGS = -std=c++11 -fPIC -shared
 PYTHON = python3
 LIBNAME = libthreebodyproblem
-LIBFILE = $(LIBNAME).so
+
+ifeq ($(OS),Windows_NT)
+    LIBFILE = $(LIBNAME).dll
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        LIBFILE = $(LIBNAME).so
+    endif
+    ifeq ($(UNAME_S),Darwin)
+        LIBFILE = $(LIBNAME).dylib
+    endif
+endif
+
 PYTHONFILE = threeBodyProblem.py
 
 all: $(LIBFILE)
