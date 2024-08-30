@@ -26,7 +26,7 @@ run: $(LIBFILE)
 	$(PYTHON) $(PYTHONFILE)
 
 install-deps:
-	sudo apt-get install -y libgl1-mesa-dri libglx-mesa0 libgl1-mesa-glx mesa-utils xserver-xorg-video-radeon
+	sudo apt-get install -y libgl1-mesa-dri libglx-mesa0 mesa-utils xserver-xorg-video-radeon
 
 clean:
 	rm -f $(LIBFILE)
